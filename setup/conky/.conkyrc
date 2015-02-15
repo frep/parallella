@@ -89,7 +89,7 @@ ${color1}Temp  (°mC) $alignr${execi 5 cat /sys/devices/virtual/thermal/thermal_
 ${else}\
 ${endif}\
 ${if_existing /sys/bus/iio/devices/iio:device0}\
-${color1}Temp  (°C) $alignr${execi 5 ~/conkyTemp.py}
+${color1}Temp  (°C) $alignr${execi 5 ~/.conky/conkyTemp.py}
 ${else}\
 ${endif}\
 ${if_existing /sys/devices/system/cpu/cpu0}\

@@ -123,4 +123,4 @@ setxkbmap ch
 # CONKY
 killall conky
 sleep 10
-conky &
+conky --config=.conky/.conkyrc &
