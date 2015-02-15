@@ -80,7 +80,7 @@ function startConkyAtStartx {
 #installBasics
 #useOwnBashRc
 #installConky
-startConkyAtStartx
+#startConkyAtStartx
 
 ###################################################################################
 # reminders (not scripted)
@@ -97,5 +97,12 @@ startConkyAtStartx
 # reboot: sudo shutdown -r now
 # resize rootfs: sudo resize2fs /dev/mmcblk0p2
 
- 
+# NEW USER
+# create new user with "sudo adduser <newUser>"  (not useradd ...)
+# use "sudo addgroup <newUser> <group>" for the following groups:
+# adm dialout cdrom audio dip video plugdev admin
 
+# AUTOLOGIN FREP IN XFCE
+# change /etc/lxdm/default.conf:
+# autologin=frep
+# session=/usr/bin/startxfce4
