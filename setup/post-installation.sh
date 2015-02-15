@@ -18,8 +18,11 @@ function assertLaunchStartxScriptExists {
     		cp ${setupdir}/system/launchAtStartx.sh ~/
   	fi
   	if [ ! -f ~/.config/autostart/launchAtStartx.desktop ]; then
+		if [ ! -d ~/.config/autostart ]; then
+			mkdir ~/.config/autostart
+		fi
     		# launchAtStartx.desktop does not exist yet. Create it!
-    		cp -f ${setupdir}/launchAtStartx.desktop ~/.config/autostart/
+    		cp -f ${setupdir}/system/launchAtStartx.desktop ~/.config/autostart/
   	fi
 }
 
