@@ -39,7 +39,7 @@ function updateAndUpgrade {
 }
 
 function installBasics {
-	sudo apt-get install nano -y
+	sudo apt-get install nano lynx -y
 }
 
 function useOwnBashRc {
@@ -75,7 +75,7 @@ function startConkyAtStartx {
 ###################################################################################
 
 #setKeyboardlayout
-#setTimezone
+setTimezone
 #updateAndUpgrade
 #installBasics
 #useOwnBashRc
