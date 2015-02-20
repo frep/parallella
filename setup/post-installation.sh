@@ -32,6 +32,7 @@ function setKeyboardlayout {
 }
 
 function setTimezone {
+	sudo apt-get install --reinstall tzdata
   	sudo dpkg-reconfigure tzdata
 }
 
@@ -97,9 +98,9 @@ function installROS {
 # program
 ###################################################################################
 
+#updateAndUpgrade
 #setKeyboardlayout
 #setTimezone
-#updateAndUpgrade
 #installBasics
 #useOwnBashRc
 #installConky

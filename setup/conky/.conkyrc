@@ -58,7 +58,7 @@ color3 DarkSlateGray		# Header line
 
 # graphs
 # ======
-draw_graph_borders no
+draw_graph_borders yes
 
 # templates (1 = header)
 # =========
@@ -132,10 +132,14 @@ ${if_existing /sys/class/net/eth0}\
 # check, if interface eth0 is up
 ${if_existing /sys/class/net/eth0/operstate up}\
 ${color1}Interface: eth0  ${alignr}${color1}IP: ${addr eth0}
-${font}${color1}               Down ${alignr}${downspeed eth0}
-${font}${color1}               Up ${alignr}${upspeed eth0}
-${font}${color1}               Downloaded ${alignr}${totaldown eth0}
-${font}${color1}               Uploaded ${alignr}${totalup eth0}
+${font}${color1}Down: ${downspeedf eth0}k/s ${alignr} Up: ${upspeedf eth0}k/s
+${downspeedgraph eth0 20,110} ${alignr}${upspeedgraph eth0 20,110}
+${font}${color1}Total: ${totaldown eth0} ${alignr} Total: ${totalup eth0}
+
+#${font}${color1}               Down ${alignr}${downspeed eth0}
+#${font}${color1}               Up ${alignr}${upspeed eth0}
+#${font}${color1}               Downloaded ${alignr}${totaldown eth0}
+#${font}${color1}               Uploaded ${alignr}${totalup eth0}
 ${else}\
 ${color1}Interface: eth0 down.
 ${endif}\
