@@ -1,4 +1,5 @@
 #!/bin/bash
+###################################################################################
 #  file: post-installation.sh
 # autor: frep
 ###################################################################################
@@ -69,18 +70,41 @@ function startConkyAtStartx {
 	sudo chmod +x ~/launchAtStartx.sh
 }
 
+function installROS {
+	echo "Install ROS:"
+	echo "set locale"
+	sudo update-locale LANG=C LANGUAGE=C LC_ALL=C LC_MESSAGES=POSIX
+	echo "setup sources.list"
+	sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'
+	echo "setup key"
+	wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
+	echo "installation"
+	sudo apt-get update
+	sudo apt-get install ros-indigo-ros-base -y
+	echo "initialize rosdep"
+	sudo apt-get install python-rosdep -y
+	sudo rosdep init
+	rosdep update
+	echo "setup enviroment"
+	echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
+	source ~/.bashrc
+	echo "get rosinstall"
+	sudo apt-get install python-rosinstall -y
+}
+
 
 ###################################################################################
 # program
 ###################################################################################
 
 #setKeyboardlayout
-setTimezone
+#setTimezone
 #updateAndUpgrade
 #installBasics
 #useOwnBashRc
 #installConky
 #startConkyAtStartx
+installROS
 
 ###################################################################################
 # reminders (not scripted)
@@ -106,3 +130,11 @@ setTimezone
 # change /etc/lxdm/default.conf:
 # autologin=frep
 # session=/usr/bin/startxfce4
+
+# ROS -> Verifying os name
+# change /etc/lsb-release to the following:
+# DISTRIB_ID=Ubuntu
+# DISTRIB_RELEASE=14.04
+# DISTRIB_CODENAME=trusty
+# DISTRIB_DESCRIPTION="Ubuntu 14.04"
+
