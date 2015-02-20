@@ -83,7 +83,7 @@ ${template2 Hostname ${nodename}}
 ${template2 Uptime ${uptime}}
   
 ${template1 PROCESSORS}
-$font${color1}ARM Cortex-A7 $alignr${freq_g cpu0}Ghz
+$font${color1}ARMv7 Cortex-A9
 ${if_existing /sys/devices/virtual/thermal/thermal_zone0/temp}\
 ${color1}Temp  (°mC) $alignr${execi 5 cat /sys/devices/virtual/thermal/thermal_zone0/temp}
 ${else}\
