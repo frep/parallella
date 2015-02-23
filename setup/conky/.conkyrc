@@ -110,8 +110,12 @@ ${color1}${cpugraph}
 ${template1 MEMORY}
 $font${color1}MEM $alignc $mem / $memmax $alignr $memperc%
 $membar
-Free Memory     $memfree
- 
+#Free Memory     $memfree
+${if_existing /swapfile}\
+$font${color1}SWAP  ${alignc}${swap} / ${swapmax} ${alignr} $swapperc%
+$swapbar
+${else}\
+${endif} 
 ${template1 FILESYSTEM}
 $font${color1}/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_free_perc /home}%
 ${fs_bar /home}

@@ -93,6 +93,19 @@ function installROS {
 	sudo apt-get install python-rosinstall -y
 }
 
+function createSwapFile {
+	echo "create swapfile"
+	sudo dd if=/dev/zero of=/swapfile bs=1M count=512
+	echo "change permission of swapfile"
+	sudo chmod 600 /swapfile
+	echo "format swapfile"
+	sudo mkswap /swapfile
+	echo "activate swapfile"
+	sudo swapon /swapfile
+	echo "add to fstab"
+	sudo su -c "echo '/swapfile none swap defaults 0 0' >> /etc/fstab"
+}
+
 
 ###################################################################################
 # program
@@ -105,7 +118,8 @@ function installROS {
 #useOwnBashRc
 #installConky
 #startConkyAtStartx
-installROS
+#installROS
+#createSwapFile
 
 ###################################################################################
 # reminders (not scripted)
